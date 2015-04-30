@@ -6,12 +6,14 @@ import android.app.AlertDialog.Builder;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.media.RingtoneManager;
 import android.net.Uri;
+import android.os.Vibrator;
 import android.view.WindowManager;
 
 import com.ucheuxing.push.PushActivity;
@@ -29,7 +31,9 @@ public class NotifyManager {
         Uri ringtoneUri = RingtoneManager.getActualDefaultRingtoneUri(mContext,
                 RingtoneManager.TYPE_NOTIFICATION);
         RingtoneManager.getRingtone(mContext, ringtoneUri).play();
-	}
+        Vibrator vib = (Vibrator) mContext.getSystemService(Service.VIBRATOR_SERVICE);
+        vib.vibrate(1000);
+    }
 
 	@SuppressLint("NewApi")
 	public static void showPayNotification(Context mContext, String msg) {
