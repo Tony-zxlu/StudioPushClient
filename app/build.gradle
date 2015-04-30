@@ -1,0 +1,29 @@
+//声明该module是Android应用程序
+apply plugin: 'com.android.application'
+
+android {
+//代替清单文件中的编译sdk版本
+    compileSdkVersion 21
+    //编译工具的版本
+    buildToolsVersion "22.0.0"
+
+    defaultConfig {
+        applicationId "com.ucheuxing.push"
+        minSdkVersion 9
+        targetSdkVersion 21
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+        }
+    }
+}
+
+dependencies {
+    compile 'com.android.support:support-v4:21.0.3'
+    compile 'com.google.code.gson:gson:2.2.2'
+    compile files('libs/mina-core-2.0.9.jar')
+    compile files('libs/slf4j-android-1.5.8.jar')
+}
